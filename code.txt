@@ -1,1 +1,44 @@
+Оформление acf callback
 
+<div class="call-box">
+    <?php if ( $main_title = get_field( 'main_title' ) ) : ?>
+        <div class="h3"><?php echo esc_html( $main_title ); ?></div>
+    <?php endif; ?>
+
+    <div class="info-wrap">
+        <div class="phone-box">
+            <?php if ( $phone_title = get_field( 'phone_title' ) ) : ?>
+                <div class="phone-title"><?php echo esc_html( $phone_title ); ?></div>
+            <?php endif; ?>
+            <?php if ( have_rows( 'contact_numbers' ) ) : ?>
+                <?php while ( have_rows( 'contact_numbers' ) ) :
+                    the_row(); ?>
+                    <?php if ( $contact_number = get_sub_field( 'contact_number' ) ) : ?>
+                    <a href="tel:<?php echo strip_tags($contact_number) ?>" class="phone"><?php echo $contact_number; ?></a>
+                     <?php endif; ?>
+
+                <?php endwhile; ?>
+            <?php endif; ?>
+
+        </div>
+        <div class="order-call-box ">
+            <?php if ( $social_media_title = get_field( 'social_media_title' ) ) : ?>
+
+                <div class="order-call-title"><?php echo esc_html( $social_media_title ); ?></div>
+            <?php endif; ?>
+
+            <a class="chat-img viber" href="viber://chat?number=380677419337" target="">
+                <img svg="true" width="50" height="50" class="" src="/wp-content/themes/webshop-child/img/svg/viber.svg" alt="">
+            </a>
+            <a class="chat-img telegram" target="_blank" href="https://telegram.me/rucavychcaua">
+                <img svg="true" width="50" height="50" class="" src="/wp-content/themes/webshop-child/img/svg/telegram.svg" alt="">
+            </a>
+            <a class="chat-img facebook" target="_blank" href="https://www.facebook.com/rucavychca">
+                <img svg="true" width="50" height="50" class="" src="/wp-content/themes/webshop-child/img/svg/f2.svg" alt="">
+            </a>
+            <a style="border-radius: 50%; overflow: hidden; background-color: #f00075; padding: 0.8rem;" class="chat-img instagram" target="_blank" href="https://www.instagram.com/rucavychca/?hl=ua">
+                <img svg="true" width="50" height="50" class="" src="/wp-content/themes/webshop-child/img/svg/inst.svg" alt="">
+            </a>
+        </div>
+    </div>
+</div>
